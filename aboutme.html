@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js" type="text/javascript"><!--mce:0--></script>
+
+<link href='http://fonts.googleapis.com/css?family=Cinzel+Decorative' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Kite+One' rel='stylesheet' type='text/css'>
+
+<style>
+	body {
+		font-family: 'Kite One', sans-serif;
+		background: rgba(120, 158, 162, 1);
+		background: radial-gradient(circle, rgba(8, 1, 8, 1), transparent 10%) rgba(120, 158, 162, 1);
+		background-size: 10px;
+	}
+	div {
+		position: relative;
+	}
+	h1 {
+		font-family: 'Cinzel Decorative', cursive;
+		font-style: italic;
+		font-size: 45px;
+		text-align: center;
+	}
+	h2 {
+		font-family: 'Cinzel Decorative', cursive;
+		font-style: italic;
+		font-size: 18px;
+		text-align: center;
+		margin: -35px 0 0 0;
+	}
+	img {
+		width: 200px;
+	}
+	.slider {
+		margin: 10px 0;
+		  width: 580px; /* Update to your slider width */
+		  height: 250px; /* Update to your slider height */
+		  position: relative;
+		  overflow: hidden;
+	}
+	.slider li {
+	  display: none;
+	  position: absolute; 
+	  top: 0; 
+	  left: 0; 
+	}
+	.top {
+		text-align: right;
+	}
+	.middle {
+		text-align: center;
+	}
+	.bottom {
+		text-align: left;
+	}
+</style>		
+
+</head>
+
+<body>
+<h1>Blair Prophett Cuny</h1>
+<h2>"Fortune Favors the Bold"</h2>
+
+<div class="top">
+	<img src="http://i.imgur.com/YSJ7ro1.png">
+	<p>Serene Seattle Sunset</p>
+</div>
+
+<p>On a whim following college, I moved to Seattle, WA. Over four years, I gained valuable work experience in Clinical Research, Sales Operations, and Tech, and began to undertand my professional strengths. In particular, I found that my standard thought process utilizes keen logic, and that I find joy in fixing things that are broken. Personally, I discovered deeper passions for photography, food and wellness.</p>
+
+<div class="middle">
+	<img src="http://i.imgur.com/ykKmBR4.png">
+</div>
+
+<p>Now, after a year back in my home state of California, I have come to another point of contemplation and possibility. I have taken yet another risk and left my Ecommerce Operations job to put my energy towards a career where my skills and personality are properly utilized, and I can continuously be challenged to gain knowledge and improve skills.</p>
+
+<div class="bottom">
+	<img src="http://i.imgur.com/YMqEa86.png">
+	<p>San Francisco,<br />
+	Open Your Golden Gate</p>
+</div>
+
+<p>CONTACT ME:<br />
+	(925) 639-3797<br />
+	blaircuny@gmail.com<br />
+	www.linkedin.com/in/blaircuny</p>
+
+<ul class="slider">
+	<li><img src="http://i.imgur.com/FtJSGU6.jpg"</li>
+    <li><img src="http://i.imgur.com/AUIRN1D.jpg"</li>
+    <li><img src="http://i.imgur.com/zOJjzFt.jpg"</li>
+	<li><img src="http://i.imgur.com/AUIRN1D.jpg"</li>
+	<li><img src="http://i.imgur.com/nB6djBS.jpg"</li>
+	<li><img src="http://i.imgur.com/BKqeKfK.jpg"</li>
+	<li><img src="http://i.imgur.com/aSCPm8b.jpg"</li>
+</ul>
+
+
+<script>
+
+jQuery(function($) { 
+
+  // settings
+  var $slider = $('.slider'); // class or id of carousel slider
+  var $slide = 'li'; // could also use 'img' if you're not using a ul
+  var $transition_time = 1000; // 1 second
+  var $time_between_slides = 4000; // 4 seconds
+
+  function slides(){
+    return $slider.find($slide);
+  }
+
+  slides().fadeOut();
+
+  // set active classes
+  slides().first().addClass('active');
+  slides().first().fadeIn($transition_time);
+
+  // auto scroll 
+  $interval = setInterval(
+    function(){
+      var $i = $slider.find($slide + '.active').index();
+
+      slides().eq($i).removeClass('active');
+      slides().eq($i).fadeOut($transition_time);
+
+      if (slides().length == $i + 1) $i = -1; // loop to start
+
+      slides().eq($i + 1).fadeIn($transition_time);
+      slides().eq($i + 1).addClass('active');
+    }
+    , $transition_time +  $time_between_slides 
+  );
+
+});
+</script>
+
+</body>
